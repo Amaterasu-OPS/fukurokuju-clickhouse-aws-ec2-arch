@@ -2,11 +2,16 @@ include {
   path = find_in_parent_folders("root.hcl")
 }
 
+include "vars" {
+  path   = "${get_terragrunt_dir()}/../vars/vars.hcl"
+  expose = true
+}
+
 terraform {
-  source = "git::git@github.com:Amaterasu-OPS/artemis-terraform-modules.git//modules/ec2/key"
+  source = "${include.vars.locals.modules}/modules/ec2/key"
 }
 
 inputs = {
-  cluster_name = "xpto"
-  pk_file_path = "${get_terragrunt_dir()}/file.pem"
+  cluster_name = "${include.vars.locals.config.cluster.name}"
+  pk_file_path = "${get_terragrunt_dir()}/${include.vars.locals.config.cluster.name}.pem"
 }

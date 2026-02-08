@@ -72,3 +72,6 @@ infra/scripts/*/*
 */storage/*
 !*/storage/.gitkeep
 **/.terragrunt-cache/*
+
+configs/*
+!configs/.gitkeep
