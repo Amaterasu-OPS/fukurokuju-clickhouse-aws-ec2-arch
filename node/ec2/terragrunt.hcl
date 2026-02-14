@@ -8,7 +8,7 @@ terraform {
 }
 
 dependency "key" {
-  config_path = "../key"
+  config_path = "./key"
 
   mock_outputs = {
     name = "temp-key"
@@ -18,7 +18,7 @@ dependency "key" {
 }
 
 dependency "sg" {
-  config_path = "../sg"
+  config_path = "./sg"
 
   mock_outputs = {
     id = "temp-sg"
@@ -28,7 +28,7 @@ dependency "sg" {
 }
 
 dependency "linux" {
-  config_path = "../linux"
+  config_path = "./linux"
 
   mock_outputs = {
     id = "temp-ami"

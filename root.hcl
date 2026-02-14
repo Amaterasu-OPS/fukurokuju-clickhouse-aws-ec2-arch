@@ -11,7 +11,6 @@ locals {
     cluster_name          = local.config.cluster.name
     cluster_type          = local.cluster_type
     cluster_instance_type = local.common.cluster_instance_type
-    environment           = local.common.environment
   }
 }
 
@@ -46,10 +45,9 @@ generate "provider" {
 EOF
 }
 
-
 inputs = {
   cluster_name          = local.config.cluster.name
   cluster_type          = local.cluster_type
   cluster_instance_type = local.common.cluster_instance_type
-  environment           = local.common.environment
+  environment           = local.config.cluster.environment
 }

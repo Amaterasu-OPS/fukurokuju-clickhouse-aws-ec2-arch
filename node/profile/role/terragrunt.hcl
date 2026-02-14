@@ -4,7 +4,7 @@ include "root" {
 }
 
 terraform {
-  source = "${include.root.locals.modules}/modules/ec2/sg"
+  source = "${include.root.locals.modules}/modules/iam/roles"
 }
 
 inputs = {}

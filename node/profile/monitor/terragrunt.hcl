@@ -4,11 +4,11 @@ include "root" {
 }
 
 terraform {
-  source = "${include.root.locals.modules}/modules/iam/profile"
+  source = "${include.root.locals.modules}/modules/iam/roles/monitor"
 }
 
 dependency "role" {
-  config_path = "./role"
+  config_path = "../role"
 
   mock_outputs = {
     name = "temp-role"
