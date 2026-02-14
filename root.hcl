@@ -2,6 +2,17 @@ locals {
   aws_access_key = get_env("AWS_ACCESS_KEY_ID", "")
   aws_secret_key = get_env("AWS_SECRET_ACCESS_KEY", "")
   config         = yamldecode(file("${dirname(find_in_parent_folders("root.hcl"))}/configs/${get_env("CLUSTER_CONFIG", "cluster.yml")}"))
+  modules        = "git::git@github.com:Amaterasu-OPS/artemis-terraform-modules.git/"
+  basePath       = "${dirname(find_in_parent_folders("root.hcl"))}"
+  cluster_type   = "clickhouse-ec2"
+  common_hcl     = find_in_parent_folders("common.hcl")
+  common         = read_terragrunt_config(local.common_hcl).locals.common_inputs
+  inputs = {
+    cluster_name          = local.config.cluster.name
+    cluster_type          = local.cluster_type
+    cluster_instance_type = local.common.cluster_instance_type
+    environment           = local.common.environment
+  }
 }
 
 remote_state {
@@ -33,4 +44,12 @@ generate "provider" {
       secret_key = "${local.aws_secret_key}"
     }
 EOF
+}
+
+
+inputs = {
+  cluster_name          = local.config.cluster.name
+  cluster_type          = local.cluster_type
+  cluster_instance_type = local.common.cluster_instance_type
+  environment           = local.common.environment
 }

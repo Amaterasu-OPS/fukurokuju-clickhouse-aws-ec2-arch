@@ -75,3 +75,4 @@ infra/scripts/*/*
 
 configs/*
 !configs/.gitkeep
+.terraform.lock.hcl
