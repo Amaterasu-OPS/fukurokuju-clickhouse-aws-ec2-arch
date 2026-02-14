@@ -28,9 +28,9 @@ generate "provider" {
   if_exists = "overwrite_terragrunt"
   contents  = <<EOF
     provider "aws" {
-        region = "${local.config.aws.region}"
-        access_key = "${local.aws_access_key}"
-        secret_key = "${local.aws_secret_key}"
+      region = "${local.config.aws.region}"
+      access_key = "${local.aws_access_key}"
+      secret_key = "${local.aws_secret_key}"
     }
 EOF
 }
