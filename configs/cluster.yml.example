@@ -1,0 +1,22 @@
+aws:
+  region: "us-east-1"
+
+  dynamodb:
+    table_lock: "terraform-locks"
+    table_region: "us-east-1"
+
+  s3:
+    bucket: "tf-results-bk"
+
+cluster:
+  name: "bravo"
+  region: "us-east-1"
+  environment: "DEV"
+  keeper:
+    instance_type: "t4g.medium"
+    count: 1
+    ebs_size: 40
+  node:
+    instance_type: "t4g.medium"
+    count: 2
+    ebs_size: 40

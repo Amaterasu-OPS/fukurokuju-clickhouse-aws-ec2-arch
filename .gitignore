@@ -75,6 +75,7 @@ infra/scripts/*/*
 
 configs/*
 !configs/.gitkeep
+!configs/cluster.yml.example
 .terraform.lock.hcl
 *.pem
 *.ppk
